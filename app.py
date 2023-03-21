@@ -23,7 +23,7 @@ CORS(app)
 Migrate(app, db)
 
 # Models
-class music(db.Model):
+class Music(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(255), nullable = False)
     artist = db.Column(db.String(255), nullable = False)
