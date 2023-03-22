@@ -57,15 +57,15 @@ class MusicListResource(Resource):
         #     new_music = musics_schema.load(form_data)
         print(request)
         new_music = Music(
-            title = request.json['title'],
-            artist = request.json['artist'],
-            album = request.json['album'],
-            release_date = request.json['release_date'],
-            genre= request.json['genre']
+            title=request.json['title'],
+            artist=request.json['artist'],
+            album=request.json['album'],
+            release_date=request.json['release_date'],
+            genre=request.json['genre']
         )
         db.session.add(new_music)
         db.session.commit()
-        return musics_schema.dump(new_music), 201
+        return music_schema.dump(new_music), 201
         # except ValidationError as err:
         #     return err.messages, 400
 # Routes
