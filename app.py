@@ -33,11 +33,22 @@ class Music(db.Model):
 
 
 # Schemas
+class MusicSchema(ma.Schema):
+    # id = fields.Integer(primary_key = True)
+    # title = fields.string(primary_key = True)
+    # artist = fields.String(required = True)
+    # album = fields.String(required = True)
+    # release_date = fields.Date()
+    # genre = field.String(require = True)
+    class Meta:
+        fields = ("id", "title", "artist", "album","release_date", "genre" )
 
-
-
+music_schema = MusicSchema()
+musics_schema = MusicSchema(many = True)
 # Resources
-
-
-
+class MusicListResource(Resource):
+     def get(self):
+         all_musics = Music.query.all()
+         return musics_schema.dump(all_musics)
 # Routes
+api.add_resource(MusicListResource, '/api/musics')
